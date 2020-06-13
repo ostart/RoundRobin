@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoundRobin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" Loaded="MainWindow_OnLoaded" Closed="MainWindow_OnClosed">
+    <Grid Background="Lavender">
+        <StackPanel>
+            <WrapPanel Orientation="Horizontal">
+                <Button Name="New" Content="New" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="New_Click"/>
+                <Button Name="Pause" Content="Pause" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="Pause_Click"/>
+                <Button x:Name="Settings" Content="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="Settings_Click"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal">
+                <ListBox Name="Executors" DisplayMemberPath="Executors" HorizontalAlignment="Stretch" Width="200" Height="455" VerticalAlignment="Center" SelectionChanged="Executors_OnSelectionChanged"/>
+                <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <ListBox Name="ExecutorTasks" DisplayMemberPath="ExecutorTasks" HorizontalAlignment="Stretch" Width="200" Height="455" VerticalAlignment="Center"/>
+                <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <TextBlock Name="Tracing" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="455" Width="387"/>
+            </WrapPanel>
+        </StackPanel>
     </Grid>
 </Window>
