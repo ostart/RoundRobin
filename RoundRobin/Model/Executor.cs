@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-namespace RoundRobin.BL
+namespace RoundRobin.Model
 {
     public class Executor
     {
@@ -9,13 +9,13 @@ namespace RoundRobin.BL
 
         public string Name { get; set; }
 
-        public List<TaskUnit> TaskQueue { get; set; }
+        public ObservableCollection<TaskUnit> TaskQueue { get; set; }
 
-        public Executor(int performance, string name, List<TaskUnit> tasksUnits = null)
+        public Executor(int performance, string name, ObservableCollection<TaskUnit> tasksUnits = null)
         {
             Performance = performance;
             Name = name;
-            TaskQueue = tasksUnits ?? new List<TaskUnit>();
+            TaskQueue = tasksUnits ?? new ObservableCollection<TaskUnit>();
         }
 
         public void Enqueue(TaskUnit taskUnit)

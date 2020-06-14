@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using RoundRobin.BL;
+using RoundRobin.Model;
 
-namespace RoundRobin
+namespace RoundRobin.UI
 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml

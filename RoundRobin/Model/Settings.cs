@@ -1,4 +1,4 @@
-﻿namespace RoundRobin.BL
+﻿namespace RoundRobin.Model
 {
     public class Settings
     {

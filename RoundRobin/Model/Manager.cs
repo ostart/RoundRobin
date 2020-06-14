@@ -1,27 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-namespace RoundRobin.BL
+namespace RoundRobin.Model
 {
     public class Manager
     {
         public int TickCounter { get; set; }
 
-        public List<Executor> ExecutorsList { get; set; } 
+        public ObservableCollection<Executor> ExecutorsList { get; set; } 
 
-        public List<TaskUnit> TaskUnitsList { get; set; }
+        public ObservableCollection<TaskUnit> TaskUnitsList { get; set; }
 
         public Manager(Settings appSettings, Random random)
         {
             TickCounter = 0;
-            ExecutorsList = new List<Executor>();
+            ExecutorsList = new ObservableCollection<Executor>();
             var executorsNumber = random.Next(appSettings.MinNumberOfExecutors, appSettings.MaxNumberOfExecutors + 1);
             for (var i = 0; i < executorsNumber; i++)
             {
                 var performance = random.Next(appSettings.MinValueOfExecutorPerformance, appSettings.MaxValueOfExecutorPerformance + 1);
                 ExecutorsList.Add(new Executor(performance, $"Executor-{i}"));
             }
-            TaskUnitsList = new List<TaskUnit>();
+            TaskUnitsList = new ObservableCollection<TaskUnit>();
             var tasksNumber = random.Next(appSettings.MinNumberOfTasks, appSettings.MaxNumberOfTasks + 1);
             for (var i = 0; i < tasksNumber; i++)
             {
@@ -49,7 +49,8 @@ namespace RoundRobin.BL
                 if (firstTask == null) continue;
                 ExecutorsList[i].AddFirst(firstTask);
             }
-            ExecutorsList[0].AddFirst(taskFromLastExecutor);
+            if (taskFromLastExecutor != null)
+                ExecutorsList[0].AddFirst(taskFromLastExecutor);
         }
 
         public void DoWork()
@@ -62,10 +63,5 @@ namespace RoundRobin.BL
         }
 
         public event EventHandler<TracingEventArgs> TaskFinished;
-    }
-
-    public class TracingEventArgs: EventArgs
-    {
-        public string Message { get; set; }
     }
 }

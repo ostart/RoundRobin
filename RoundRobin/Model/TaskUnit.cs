@@ -1,10 +1,8 @@
-﻿namespace RoundRobin.BL
+﻿namespace RoundRobin.Model
 {
     public class TaskUnit
     {
         public int Complexity { get; set; }
-
-        public int Progress { get; set; }
 
         public string Name { get; set; }
 
@@ -12,17 +10,16 @@
         {
             Name = name;
             Complexity = complexity;
-            Progress = 0;
         }
 
         public void DoWork(int amountOfWork)
         {
-            Progress += amountOfWork;
+            Complexity -= amountOfWork;
         }
 
         public bool IsTaskUnitCompleted()
         {
-            return Complexity <= Progress;
+            return Complexity <= 0;
         }
     }
 }

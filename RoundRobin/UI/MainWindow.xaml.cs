@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Windows;
 using System.Text.Json;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using RoundRobin.BL;
+using RoundRobin.Model;
 
-namespace RoundRobin
+namespace RoundRobin.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -63,6 +64,8 @@ namespace RoundRobin
             _timer.Interval = new TimeSpan(0, 0, _appSettings.TimerTicksInSeconds);
             _timer.Start();
             _isPauseActivated = false;
+            ExecutorTasks.ItemsSource = new ObservableCollection<TaskUnit>();
+            Tracing.Text = $"Modeling started{Environment.NewLine}";
         }
 
         private void AddMessageToTracing(Object sender, TracingEventArgs e)
@@ -95,10 +98,9 @@ namespace RoundRobin
 
         private void Executors_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Source is Executor executor)
-            {
+            var executor = (Executor)Executors.SelectedItem;
+            if (executor != null)
                 ExecutorTasks.ItemsSource = executor.TaskQueue;
-            }
         }
     }
 }

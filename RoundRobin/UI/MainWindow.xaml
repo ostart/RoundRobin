@@ -1,0 +1,54 @@
+﻿<Window x:Class="RoundRobin.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoundRobin"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="MainWindow_OnLoaded" Closed="MainWindow_OnClosed">
+    <Grid Background="Lavender">
+        <StackPanel>
+            <WrapPanel Orientation="Horizontal">
+                <Button Name="New" Content="New" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="New_Click"/>
+                <Button Name="Pause" Content="Pause" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="Pause_Click"/>
+                <Button x:Name="Settings" Content="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="75" Click="Settings_Click"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal">
+                <ListBox Name="Executors" HorizontalAlignment="Stretch" Width="200" Height="455" VerticalAlignment="Center" SelectionChanged="Executors_OnSelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Left"/>
+                                    <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5 0"/>
+                                    <TextBlock Text="{Binding StringFormat=Performance:{0}, Path=Performance}" HorizontalAlignment="Left"/>
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Path=TaskQueue[0].Name, Mode=OneWay}" HorizontalAlignment="Left"/>
+                                    <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5 0"/>
+                                    <TextBlock Text="{Binding StringFormat=Complexity:{0}, Path=TaskQueue[0].Complexity, Mode=OneWay}" HorizontalAlignment="Left"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <ListBox Name="ExecutorTasks" HorizontalAlignment="Stretch" Width="200" Height="455" VerticalAlignment="Center">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel Margin="5">
+                                <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Left"/>
+                                <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5 0"/>
+                                <TextBlock Text="{Binding StringFormat=Complexity:{0}, Path=Complexity}" HorizontalAlignment="Left"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <GridSplitter ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="455" Width="379">
+                    <TextBlock Name="Tracing" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" Width="379"/>
+                </ScrollViewer>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
