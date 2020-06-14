@@ -29,7 +29,7 @@
 - минимальная и максимальная сложность задачи.
 Обеспечено хранение и восстановление настроек программы в файл settings.json.
 
-![Settings Window](https://github.com/ostart/RoundRobin/img/settings.jpg)
+![Settings Window](https://github.com/ostart/RoundRobin/blob/master/img/settings.jpg)
 
 
 # Описание работы программы
@@ -39,12 +39,8 @@
 Во втором списке располагается список всех задач конкретного исполнителя в случае, когда в первом списке мышью выбирается некоторый исполнитель. 
 В третьем списке выводится лог работы программы, а именно: при завершени задачи (имя исполнителя, название задачи и номер цикла моделирования).
 
-![Main Window](https://github.com/ostart/RoundRobin/img/mainWindow.jpg)
+![Main Window](https://github.com/ostart/RoundRobin/blob/master/img/mainWindow.jpg
 
 По окончанию моделирования в окне трассировки лога можно увидеть, что полный цикл моделирования занял 102 секунды при наличии 8 исполнителей и 68 задачах.
 
-![Model Cycle Finished](https://github.com/ostart/RoundRobin/img/modelCycleFinished.jpg)
-
-
-
-
+![Model Cycle Finished](https://github.com/ostart/RoundRobin/blob/master/img/modelCycleFinished.jpg)
