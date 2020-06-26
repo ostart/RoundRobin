@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoundRobin"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="510" Width="410" WindowStartupLocation="CenterScreen" Loaded="SettingsWindow_OnLoaded">
+        Title="Settings" Height="510" Width="416" WindowStartupLocation="CenterScreen" Loaded="SettingsWindow_OnLoaded">
     <Grid Background="Lavender" Height="480" VerticalAlignment="Top">
         <StackPanel>
             <GroupBox Name="TimerTicks" Header="Timer ticks in seconds" Padding="5" Margin="20 20 20 10">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoundRobin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="MainWindow_OnLoaded" Closed="MainWindow_OnClosed">
+        Title="RoundRobin" Height="517" Width="805" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="MainWindow_OnLoaded" Closed="MainWindow_OnClosed">
     <Grid Background="Lavender">
         <StackPanel>
             <WrapPanel Orientation="Horizontal">
